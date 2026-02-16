@@ -2,19 +2,15 @@
 
 @theme {
   --color-codex-red: #cf3222;
-  
-  /* Semantic Theme Mappings */
   --color-page-bg: var(--bg-main);
   --color-card-bg: var(--bg-card);
   --color-text-main: var(--text-primary);
   --color-text-muted: var(--text-secondary);
   --color-border-color: var(--border-subtle);
-
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-inter);
 }
 
-/* Light Theme Variables */
 :root {
   --bg-main: #fcfcfc;
   --bg-card: #ffffff;
@@ -23,7 +19,6 @@
   --border-subtle: #eeeeee;
 }
 
-/* Dark Theme Overrides */
 [data-theme='dark'] {
   --bg-main: #080808;
   --bg-card: #111111;
@@ -34,17 +29,24 @@
 
 @layer base {
   body {
-    @apply transition-colors duration-500 ease-in-out;
+    @apply transition-colors duration-500 ease-in-out overflow-x-hidden;
     background-color: var(--bg-main);
     color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
   }
 }
 
+/* Glass effect responsive */
 .glass-nav {
   @apply backdrop-blur-md border-b;
   background-color: color-mix(in srgb, var(--bg-main), transparent 20%);
   border-color: var(--border-subtle);
 }
 
+/* Smooth horizontal scroll for mobile tabs */
 .no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { 
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+  -webkit-overflow-scrolling: touch;
+}
